@@ -1,6 +1,7 @@
 function vali(){
 	var cc=prompt("introduzca numero de tarjera de credito (nnnn-nnnn-nnnn-nnnn)");
 	var msn="";
+	var vd=true;
 	var po=cc.replace(/-/g,"");
 	if(po.length===16){
 		if(/^([0-9])*$/.test(po)){
@@ -9,7 +10,7 @@ function vali(){
 			do{
 				p=po.charAt(0);
 				p2=po.charAt(n);
-				if(p == p2){
+				if(p != p2){
 					rpt=false;
 				}
 				n++;
@@ -22,20 +23,27 @@ function vali(){
 					sum=sum+l;
 				}
 				if(sum>15){
-					msn="tarjeta de credito verificada";
+					msn="ningun error";
+					
 				}else{
-					msn="el valor total es mejor de 16";
+					msn="el valor total es menor de 16";
+					vd=false;
 				}
 			}else{
 				msn="debe haber al menos 2 numeros diferentes";
+				vd=false;
 			}
 		}else{
 			msn="todos los elementos deben ser numericos";
+			vd=false;
 		}
 	}else{
 		msn="debe de tener 16 digitos";
+		vd=false;
 	}
-	console.log(msn);
-	document.body.getElementsByTagName("h1").innerHTML=msn;
+	var mn={valid:vd,error:msn};
+	return mn;
+	
 }
-vali();
+var msj= vali();
+console.log("valid:"+msj.valid+", error:"+msj.error);
