@@ -53,8 +53,90 @@ class ppt{
 		}
 	}
 }
+class agenda{
+	var lst=[];
+	var dt;
+	function add(nom,dir,tlf,email){
+		dt=[nom,dir,tlf,email];
+		lst.push(dt);
+	}
+	function mostrar(nom){
+		var tam=lst.length;
+		var dat;
+		for(t=0;t<tam;t++){
+			dat=list[t];
+			if(dat[0]===nom){
+				return dat;
+			}
+		}
+		return "no se encontro el contacto";
+	}
+	function mostrarall(){
+		var tam=lst.length;
+		var rs;
+		var rp=[""];
+		var dat;
+		var min;
+		for(t=0;t<tam;t++){
+			dat=list[t];
+			for(z=0;z<rp.length;z++){
+				if(dat[0]===rp[z]){
+				}else{
+					if (rp[z]===""){
+						min=dat[0];
+					}else{
+						if(dat[0]<rp[z]){
+							min=dat[0];
+						}
+					}
+				}
+			}
+		}
+		return rs;
+	}
+	function borrar(nom){
+		var tam=lst.length;
+		var dat;
+		for(t=0;t<tam;t++){
+			dat=list[t];
+			if(dat[0]===nom){
+				list..splice(t,1);
+			}
+		}
+		return "no se encontro el contacto";
+	}
+}
+function caja{
+	var user;
+	var cuenta;
+	var access;
+	var total;
+	constructor(){
+		user={};
+		cuenta={};
+		access=false;
+		total=0;
+	}
+	function newuser(us,des){
+		user={us,des};
+	}
+	function inicuenta(){
+		access=true;
+	}
+	function scan(prd,cant){
+		if(access){
+			var sbtot= prd[1]*cant;
+			total=total+sbtot;
+		}
+	}
+	function fincuenta(){
+		desc=total*user[1]/100;
+		total=total-desc;
+		access=false;
+	}
+}
  //ejercicio 1 y 2
- var pl=prompt("¿piedra,papel o tijeras? escoge una,con letras minusculas a poder ser,gracias");
+ /*var pl=prompt("¿piedra,papel o tijeras? escoge una,con letras minusculas a poder ser,gracias");
  var ppt=new ppt(pl);
  ppt.iarnd();
- document.getElementById("p").innerHTML=ppt.getResult();
+ document.getElementById("p").innerHTML=ppt.getResult();*/
